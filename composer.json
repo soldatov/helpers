@@ -1,0 +1,20 @@
+{
+    "name": "soldatov/helpers",
+    "description": "Helpers for string, array, objects, etc.",
+    "type": "library",
+    "license": "MIT",
+    "keywords": [
+        "php",
+        "array",
+        "helper",
+        "helpers",
+        "function"
+    ],
+    "authors": [
+        {
+            "name": "Anatoly Soldatov",
+            "email": "soldatov.anatoly@gmail.com"
+        }
+    ],
+    "require": {}
+}
