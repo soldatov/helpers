@@ -16,8 +16,20 @@
             "email": "soldatov.anatoly@gmail.com"
         }
     ],
+    "autoload": {
+        "psr-4": {
+            "Soldatov\\Helpers\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Soldatov\\Helpers\\Tests\\": "tests"
+        }
+    },
     "require": {
-        "php": "^7.3"
+        "php": "^7.1",
+        "soldatov/gettype": "^1.0",
+        "ext-mbstring": "*"
     },
     "require-dev": {
         "phpunit/phpunit": "^9"
