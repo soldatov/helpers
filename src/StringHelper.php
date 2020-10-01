@@ -2,6 +2,7 @@
 
 namespace Soldatov\Helpers;
 
+use JsonException;
 use Soldatov\Helpers\Exceptions\BadParameterException;
 use Soldatov\Helpers\Exceptions\BadVarTypeException;
 
@@ -83,5 +84,15 @@ class StringHelper extends BaseHelper
         }
 
         return $default;
+    }
+
+    /**
+     * @param string $json
+     * @return mixed
+     * @throws JsonException
+     */
+    public static function parseJson(string $json)
+    {
+        return json_decode(trim($json), true, 512, JSON_THROW_ON_ERROR | JSON_INVALID_UTF8_IGNORE);
     }
 }

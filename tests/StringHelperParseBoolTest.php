@@ -2,6 +2,7 @@
 
 namespace Soldatov\Helpers\Tests;
 
+use JsonException;
 use Soldatov\Helpers\Exceptions\BadParameterException;
 use Soldatov\Helpers\StringHelper;
 use stdClass;
@@ -98,5 +99,32 @@ class StringHelperParseBoolTest extends BaseTestCase
         $this->assertFalse(StringHelper::parseToBool('', false));
         $this->assertTrue(StringHelper::parseToBool(' ', true));
         $this->assertFalse(StringHelper::parseToBool(' ', false));
+    }
+
+    public function testParseJson()
+    {
+        $this->assertParsedRow(StringHelper::parseJson('{"a": 123, "b": [2, 3]}'));
+        $this->assertParsedRow(StringHelper::parseJson('  {"a": 123, "b": [2, 3]}'));
+        $this->assertParsedRow(StringHelper::parseJson('     {"a": 123,    "b": [2, 3]}     '));
+    }
+
+    public function testParseJsonError()
+    {
+        $this->expectException(JsonException::class);
+        StringHelper::parseJson('{"a: 123, "b": [2, 3]}');
+    }
+
+    private function assertParsedRow($row)
+    {
+        $this->assertIsArray($row);
+        $this->assertArrayHasKey('a', $row);
+        $this->assertArrayHasKey('b', $row);
+        $this->assertIsInt($row['a']);
+        $this->assertEquals(123, $row['a']);
+        $this->assertIsArray($row['b']);
+        $this->assertArrayHasKey(0, $row['b']);
+        $this->assertArrayHasKey(1, $row['b']);
+        $this->assertEquals(2, $row['b'][0]);
+        $this->assertEquals(3, $row['b'][1]);
     }
 }
