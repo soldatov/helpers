@@ -32,6 +32,19 @@ var_dump(StringHelper::parseToBool(false)); // bool(false)
 /* etc. */
 ```
 
+### StringHelper::parseJson
+
+```php
+use Soldatov\Helpers\StringHelper;
+StringHelper::parseJson('asd'); // Fatal error: Uncaught JsonException: Syntax error in ...
+```
+
+```php
+use Soldatov\Helpers\StringHelper;
+var_export(StringHelper::parseJson('{"a": 123}')); // array ('a' => 123,)
+var_export(StringHelper::parseJson('  {"a":    123}    ')); // array ('a' => 123,)
+```
+
 ## VarHelper
 
 ### VarHelper::checkVarType
