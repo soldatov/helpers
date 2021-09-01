@@ -8,8 +8,8 @@ use Soldatov\Helpers\Exceptions\BadVarTypeException;
 
 class StringHelper extends BaseHelper
 {
-    private static $strTrue = ['true', 't', '1', 'y', 'yes'];
-    private static $strFalse = ['false', 'f', '0', 'n', 'no', 'none'];
+    private static $strTrue = ['true', 't', '1', 'y', 'yes', 'да'];
+    private static $strFalse = ['false', 'f', '0', 'n', 'no', 'none', 'нет'];
 
     /**
      * @param bool|int|string $value
@@ -94,5 +94,32 @@ class StringHelper extends BaseHelper
     public static function parseJson(string $json)
     {
         return json_decode(trim($json), true, 512, JSON_THROW_ON_ERROR | JSON_INVALID_UTF8_IGNORE);
+    }
+
+
+    /**
+     * Replaces multiple spaces with one
+     * @param string $str
+     * @return string
+     */
+    public static function oneSpace(string $str): string
+    {
+        return trim(preg_replace('|\s+|', ' ', $str));
+    }
+
+
+    /**
+     * Splits a string into an array of strings of no more than a certain length
+     * @param string $str
+     * @param int $width Max string width
+     * @return array|string[]
+     */
+    public static function slicer(string $str, int $width = 255): array
+    {
+        $str = self::oneSpace($str);
+        $break = '{{break'.substr(md5(time() . '_' . microtime()), 0, 8).'}}';
+        $str = self::mb_wordwrap($str, $width, $break, true);
+
+        return explode($break, $str);
     }
 }

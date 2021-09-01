@@ -33,6 +33,9 @@ class StringHelperParseBoolTest extends BaseTestCase
         $this->assertTrue(StringHelper::parseToBool('  yeS  '));
         $this->assertTrue(StringHelper::parseToBool('yeS  '));
 
+        $this->assertTrue(StringHelper::parseToBool('да  '));
+        $this->assertTrue(StringHelper::parseToBool('ДА  '));
+
         $this->assertTrue(StringHelper::parseToBool(1));
         $this->assertTrue(StringHelper::parseToBool(100));
         $this->assertTrue(StringHelper::parseToBool(1.0));
@@ -60,6 +63,9 @@ class StringHelperParseBoolTest extends BaseTestCase
         $this->assertFalse(StringHelper::parseToBool(' No  '));
         $this->assertFalse(StringHelper::parseToBool('NO'));
         $this->assertFalse(StringHelper::parseToBool('NOne'));
+
+        $this->assertFalse(StringHelper::parseToBool('нет'));
+        $this->assertFalse(StringHelper::parseToBool('   НЕТ'));
 
         $this->assertFalse(StringHelper::parseToBool(0));
         $this->assertFalse(StringHelper::parseToBool(0.0));

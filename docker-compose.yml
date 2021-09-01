@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+
+  phpfpm:
+    container_name: helpers-php
+    image: helpers-php
+    build:
+      context: ./docker-files/dev/php
+    env_file:
+      - .env.local
+    user: "1000:1000"
+    volumes:
+      - .:/app

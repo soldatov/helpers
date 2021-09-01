@@ -45,6 +45,16 @@ var_export(StringHelper::parseJson('{"a": 123}')); // array ('a' => 123,)
 var_export(StringHelper::parseJson('  {"a":    123}    ')); // array ('a' => 123,)
 ```
 
+```php
+use Soldatov\Helpers\StringHelper;
+var_export(StringHelper::oneSpace('One    two 3  ')); // 'One two 3'
+```
+
+```php
+use Soldatov\Helpers\StringHelper;
+var_export(StringHelper::slicer('One two One three', 10)); // array (0 => 'One two', 1 => 'One three')
+```
+
 ## VarHelper
 
 ### VarHelper::checkVarType
