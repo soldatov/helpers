@@ -11,6 +11,7 @@ Helps to recognize a boolean value.
 ```php
 use Soldatov\Helpers\StringHelper;
 
+var_dump(StringHelper::parseToBool('да')); // bool(true)
 var_dump(StringHelper::parseToBool('Yes')); // bool(true)
 var_dump(StringHelper::parseToBool('  yes')); // bool(true)
 var_dump(StringHelper::parseToBool('YES  ')); // bool(true)
@@ -22,6 +23,7 @@ var_dump(StringHelper::parseToBool(1)); // bool(true)
 var_dump(StringHelper::parseToBool(true)); // bool(true)
 /* etc. */
 
+var_dump(StringHelper::parseToBool('нет')); // bool(false)
 var_dump(StringHelper::parseToBool('no')); // bool(false)
 var_dump(StringHelper::parseToBool('n')); // bool(false)
 var_dump(StringHelper::parseToBool('false')); // bool(false)
