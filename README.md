@@ -45,10 +45,17 @@ var_export(StringHelper::parseJson('{"a": 123}')); // array ('a' => 123,)
 var_export(StringHelper::parseJson('  {"a":    123}    ')); // array ('a' => 123,)
 ```
 
+### StringHelper::oneSpace
+Removes extra spaces from a string.
+
 ```php
 use Soldatov\Helpers\StringHelper;
 var_export(StringHelper::oneSpace('One    two 3  ')); // 'One two 3'
 ```
+
+### StringHelper::slicer
+Splits a string by words into substrings that are no more than a certain length.
+Supports UTF-8.
 
 ```php
 use Soldatov\Helpers\StringHelper;
