@@ -22,6 +22,8 @@ class StringHelperSlicerTest extends BaseTestCase
         $row = StringHelper::slicer($str, 3);
         $this->assertEquals($row[0], $row[2]);
         $this->assertEquals($row[1], $row[3]);
+
+        $this->assertCount(4, $row);
     }
 
     public function testSliceLong()
