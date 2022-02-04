@@ -1,4 +1,7 @@
-FROM php:7.3-fpm
+FROM php:8.1-fpm
+
+COPY --from=composer /usr/bin/composer /usr/bin/composer
+
 # https://github.com/mlocati/docker-php-extension-installer
 COPY --from=mlocati/php-extension-installer /usr/bin/install-php-extensions /usr/local/bin/
 
